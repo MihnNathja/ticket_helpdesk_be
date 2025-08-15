@@ -4,6 +4,7 @@ const ticketsRoute = require('./routes/ticketsRoute');
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 // Đăng ký route cho tickets
 app.use('/api/tickets', ticketsRoute);
