@@ -48,6 +48,16 @@ module.exports = function (sequelize, DataTypes) {
         key: 'user_id'
       }
     },
+    created_at: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: Sequelize.fn('SYSDATETIME')
+    },
+    updated_at: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: Sequelize.fn('SYSDATETIME')
+    },
     resolved_at: {
       type: DataTypes.DATE,
       allowNull: true
@@ -56,9 +66,7 @@ module.exports = function (sequelize, DataTypes) {
     sequelize,
     tableName: 'tickets',
     schema: 'dbo',
-    timestamps: true,
-    createdAt: 'created_at',   // Thêm dòng này
-    updatedAt: 'updated_at',   // Thêm dòng này
+    timestamps: false,
     indexes: [
       {
         name: "PK__tickets__D596F96BAE11C9C8",
