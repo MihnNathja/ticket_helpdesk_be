@@ -1,11 +1,20 @@
-const { tickets } = require('../models/init-models')(require('../config/database'));
+const ticketsService = require('../services/ticketsService');
 
-exports.getAllTickets = async (req, res) => {
+exports.getAllTickets = async (req, res, next) => {
     try {
-        const allTickets = await tickets.findAll();
-        res.status(200).json(allTickets);
+        const tickets = await ticketsService.getAllTickets();
+        res.status(200).json(tickets);
     } catch (error) {
-        console.error('Error fetching tickets:', error);
-        res.status(500).json({ message: 'Internal server error' });
+        next(error); // Pass the error to the error handling middleware
+    }
+};
+
+exports.addOrUpdateTicket = async (req, res, next) => {
+    try {
+        const ticketData = req.body;
+        const ticket = await ticketsService.addOrUpdateTicket(ticketData);
+        res.status(200).json(ticket);
+    } catch (error) {
+        next(error); // Pass the error to the error handling middleware
     }
 }
