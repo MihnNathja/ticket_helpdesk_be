@@ -1,6 +1,7 @@
 const express = require('express');
 const sequelize = require('./config/database');
 const ticketsRoute = require('./routes/ticketsRoute'); 
+const cors = require('cors');
 
 const app = express();
 app.use(express.json());

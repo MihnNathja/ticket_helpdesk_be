@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-module.exports = function (sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
   return sequelize.define('tickets', {
     ticket_id: {
       autoIncrement: true,
@@ -57,8 +57,6 @@ module.exports = function (sequelize, DataTypes) {
     tableName: 'tickets',
     schema: 'dbo',
     timestamps: true,
-    createdAt: 'created_at',   // Thêm dòng này
-    updatedAt: 'updated_at',   // Thêm dòng này
     indexes: [
       {
         name: "PK__tickets__D596F96BAE11C9C8",
