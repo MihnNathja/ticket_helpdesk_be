@@ -48,8 +48,8 @@ CREATE TABLE shifts (
     user_id INT NOT NULL FOREIGN KEY REFERENCES user_db(user_id) ON DELETE CASCADE,
     location_lat FLOAT NOT NULL,
     location_lng FLOAT NOT NULL,
-    start_time TIME NOT NULL,
-    end_time TIME NOT NULL,
+    start_time DATETIME NOT NULL,
+    end_time DATETIME NOT NULL,
     allowed_radius INT DEFAULT 50, -- mét
     created_at DATETIME DEFAULT GETDATE(),
     updated_at DATETIME DEFAULT GETDATE()
@@ -66,3 +66,14 @@ CREATE TABLE attendance (
     created_at DATETIME DEFAULT GETDATE(),
     updated_at DATETIME DEFAULT GETDATE()
 );
+
+
+INSERT INTO shifts (user_id, location_lat, location_lng, start_time, end_time, allowed_radius)
+VALUES
+(1, 10.762622, 106.660172, '2025-08-15 08:00:00', '2025-08-15 17:00:00', 100),
+(2, 10.762700, 106.660200, '2025-08-15 09:00:00', '2025-08-15 18:00:00', 100);
+
+INSERT INTO attendance (user_id, shift_id, check_in_time, check_out_time, status)
+VALUES
+(1, 1, '2025-08-15 08:01:00', '2025-08-15 17:05:00', 'on_time'),
+(2, 2, '2025-08-15 09:10:00', '2025-08-15 18:00:00', 'late');

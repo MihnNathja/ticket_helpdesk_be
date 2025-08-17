@@ -24,23 +24,35 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     start_time: {
-      type: DataTypes.TIME,
+      type: DataTypes.DATE,
       allowNull: false
     },
     end_time: {
-      type: DataTypes.TIME,
+      type: DataTypes.DATE,
       allowNull: false
     },
     allowed_radius: {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 50
+    },
+    created_at: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: sequelize.literal('GETDATE()')
+    },
+    updated_at: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: sequelize.literal('GETDATE()')
     }
   }, {
     sequelize,
     tableName: 'shifts',
     schema: 'dbo',
     timestamps: true,
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
     indexes: [
       {
         name: "PK__shifts__7B26722052E7A740",
