@@ -66,7 +66,8 @@ module.exports = function(sequelize, DataTypes) {
     sequelize,
     tableName: 'tickets',
     schema: 'dbo',
-    updatedAt: 'updated_at',   // Thêm dòng này
+    updatedAt: 'updated_at', 
+    createdAt: 'created_at',
     indexes: [
       {
         name: "PK__tickets__D596F96BAE11C9C8",

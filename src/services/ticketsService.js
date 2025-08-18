@@ -1,5 +1,4 @@
 const ticketsRepository = require('../repositories/ticketsRepository');
-const datetimeUtil = require('../utils/datetimeUtil');
 
 exports.getAllTickets = async () => {
     return await ticketsRepository.getAllTickets();
